@@ -75,14 +75,13 @@ singleton applications)
 * implement AKS scaling strategies
 ## Integrate caching and content delivery within solutions
 * store and retrieve data in Azure Redis cache
-* develop code to implement CDN’s in solutions
+* develop code to implement CDNâ€™s in solutions
 * invalidate cache content (CDN or Redis)
 ## Instrument solutions to support monitoring and logging
 * configure instrumentation in an app or service by using Application Insights
 * analyze and troubleshoot solutions by using Azure Monitor
 * implement Application Insights Web Test and Alerts
-# Connect to and consume Azure services and third-party services (20-
-25%)
+# Connect to and consume Azure services and third-party services (20-25%)
 ## Develop an App Service Logic App
 * create a Logic App
 * create a custom connector for Logic Apps
