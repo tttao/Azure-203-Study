@@ -1,6 +1,6 @@
 # Develop Azure Infrastructure as a Service Compute Solution (10-15%)
 ## Implement solutions that use virtual machines (VM)
-* provision VMs
+* [provision VMs](IAS/IAS_VM.md)
 * create ARM templates
 * configure Azure Disk Encryption for VMs
 ## Implement batch jobs by using Azure Batch Services
