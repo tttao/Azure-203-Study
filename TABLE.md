@@ -39,6 +39,16 @@ TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
 CustomerEntity insertedCustomer = result.Result as CustomerEntity;
 ```
 
+Insert or update (batch)
+
+```
+TableBatchOperation batchOperation = new TableBatchOperation();
+batchOperation.insertOrReplace(entity1);
+batchOperation.insertOrReplace(entity2);
+TableBatchResult results = await table.ExecuteBatchAsync(batchOperation);
+```
+
+
 Get By PartitionKey / RowKey
 
 ```java
