@@ -17,7 +17,7 @@ az vm create \
     --admin-password myPassword
 ```
 
-# Enable encryption
+# Enable encryption (azure cli)
 
 Create Key Vault
 
@@ -62,3 +62,17 @@ az vm encryption enable
 --volume-type all
 ```
 
+# Enable encryption (azure powershell)
+
+```shell script
+New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
+$cred = = Get-Credential
+
+New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:16.04-LTS:latest -Size Standard_D2S_V3
+
+New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location EastUS -EnabledForDiskEncryption
+
+$KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup"
+
+Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -SkipVmBackup -VolumeType All
+```
