@@ -1,4 +1,12 @@
-Create BatchClient
+# Continuous vs Triggered
+
+| Continuous   |      Triggered      |
+|--------------|:-------------:|
+| Starts immediately when the WebJob is created. To keep the job from ending, the program or script typically does its work inside an endless loop. If the job does end, you can restart it.	 |  Starts only when triggered manually or on a schedule.|
+| Runs on all instances that the web app runs on. You can optionally restrict the WebJob to a single instance.	 |    Runs on a single instance that Azure selects for load balancing. |
+| Supports remote debugging.	 | Doesn't support remote debugging. |
+
+# Create BatchClient
 
 ```java
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -6,7 +14,7 @@ BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, 
 using (BatchClient batchClient = BatchClient.Open(cred))
 ```
 
-Create Pool
+# Create Pool
 
 ```java
 CloudPool pool = batchClient.PoolOperations.CreatePool(
@@ -16,7 +24,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     virtualMachineConfiguration: vmConfiguration);
 ```
 
-Create Job
+# Create Job
 
 ```java
 try
@@ -29,7 +37,7 @@ try
 }
 ```
 
-Create tasks
+# Create tasks
 
 ```java
 for (int i = 0; i < inputFiles.Count; i++)
@@ -46,7 +54,7 @@ for (int i = 0; i < inputFiles.Count; i++)
 batchClient.JobOperations.AddTask(JobId, tasks);
 ```
 
-#Persist batch output to Azure Storage
+# Persist batch output to Azure Storage
 
 Create storage container
 ```java
